@@ -1,6 +1,0 @@
-#ifndef FISCHHAKEN_LIBRARY_H
-#define FISCHHAKEN_LIBRARY_H
-
-void hello();
-
-#endif //FISCHHAKEN_LIBRARY_H
