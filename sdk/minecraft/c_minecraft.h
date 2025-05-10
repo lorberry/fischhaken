@@ -7,6 +7,8 @@
 class c_minecraft : public c_jobject {
 public:
     explicit c_minecraft(jobject object_in);
+
+    static c_minecraft get_minecraft();
 };
 
 
