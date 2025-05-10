@@ -6,7 +6,7 @@
 #pragma comment(lib, "Winmm.lib")
 
 void MainThread(HMODULE instance) {
-    PlaySound(TEXT("C:/Windows/Media/Windows Hardware Insert.wav"), nullptr, SND_FILENAME);
+    PlaySound(TEXT("C:/Windows/Media/Windows Hardware Insert.wav"), nullptr, SND_FILENAME | SND_ASYNC);
 
     FILE *output_buffer = nullptr;
     AllocConsole();
@@ -19,7 +19,6 @@ void MainThread(HMODULE instance) {
         fclose(output_buffer);
     }
 
-    PlaySound(TEXT("C:/Windows/Media/Windows Hardware Remove.wav"), nullptr, SND_FILENAME);
     FreeConsole();
     FreeLibraryAndExitThread(instance, 0ul);
 }
