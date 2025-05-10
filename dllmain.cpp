@@ -5,7 +5,7 @@
 
 #include "jvm.h"
 #include "sdk/classes/classes.h"
-#include "sdk/minecraft/c_minecraft.h"
+#include "sdk/minecraft/minecraft.h"
 
 #pragma comment(lib, "Winmm.lib")
 
@@ -19,10 +19,14 @@ void MainThread(const HMODULE instance) {
     jvm::load();
     classes::load();
 
-    std::cout << "minecraft instance: " << c_minecraft::get_minecraft().cached_object << std::endl;
-
     while (!GetAsyncKeyState(VK_END)) {
+        auto minecraft = minecraft::get_minecraft();
+        std::cout << "minecraft instance: " << minecraft.cached_object << std::endl;
+        auto player = minecraft::get_minecraft().get_local_player();
+        std::cout << "player instance: " << player.cached_object << std::endl;
 
+
+        Sleep(1000);
     }
 
     if (output_buffer) {

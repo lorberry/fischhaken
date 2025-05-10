@@ -19,10 +19,12 @@ include_directories(${minhook_SOURCE_DIR}/include)
 add_library(fischhaken SHARED dllmain.cpp
         jvm.cpp
         jvm.h
-        sdk/minecraft/c_minecraft.cpp
-        sdk/minecraft/c_minecraft.h
+        sdk/minecraft/minecraft.cpp
+        sdk/minecraft/minecraft.h
         sdk/classes/classes.h
         sdk/classes/classes.cpp
+        sdk/minecraft/entity.cpp
+        sdk/minecraft/entity.h
 )
 
 target_link_libraries(fischhaken PRIVATE minhook)

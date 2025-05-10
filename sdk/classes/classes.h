@@ -7,7 +7,7 @@ namespace classes {
     void load();
 
     inline jclass minecraft_class = nullptr;
-    inline jclass entity_player_sp_class = nullptr;
+    inline jclass entity_class = nullptr;
 }
 
 #endif //CLASSES_H
