@@ -6,7 +6,7 @@ void MainThread(HMODULE instance) {
     while (!GetAsyncKeyState(VK_END)) {
     }
 
-    FreeLibrary(instance);
+    FreeLibraryAndExitThread(instance, 0ul);
 }
 
 bool __stdcall DllMain(HINSTANCE instance, const DWORD reason, LPVOID reserved) {
