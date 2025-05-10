@@ -7,3 +7,15 @@ void jvm::load() {
         vm->AttachCurrentThreadAsDaemon(reinterpret_cast<void **>(&env), nullptr);
     }
 }
+
+c_jobject::c_jobject(jobject object_in) {
+    this->cached_object = object_in;
+}
+
+c_jobject::~c_jobject() {
+    if (this->cached_object != nullptr) {
+        jvm::env->DeleteLocalRef(this->cached_object);
+    }
+}
+
+
