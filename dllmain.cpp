@@ -5,7 +5,7 @@
 
 #pragma comment(lib, "Winmm.lib")
 
-void MainThread(HMODULE instance) {
+void MainThread(const HMODULE instance) {
     PlaySound(TEXT("C:/Windows/Media/Windows Hardware Insert.wav"), nullptr, SND_FILENAME | SND_ASYNC);
 
     FILE *output_buffer = nullptr;

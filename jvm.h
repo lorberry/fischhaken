@@ -13,7 +13,7 @@ namespace jvm {
 
 class c_jobject {
 public:
-    c_jobject(jobject object_in);
+    explicit c_jobject(jobject object_in);
 
     ~c_jobject();
 
