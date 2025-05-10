@@ -19,9 +19,10 @@ void MainThread(const HMODULE instance) {
     jvm::load();
     classes::load();
 
+    std::cout << "minecraft instance: " << c_minecraft::get_minecraft().cached_object << std::endl;
+
     while (!GetAsyncKeyState(VK_END)) {
-        std::cout << "minecraft instance: " << c_minecraft::get_minecraft().cached_object << std::endl;
-        Sleep(1);
+
     }
 
     if (output_buffer) {
