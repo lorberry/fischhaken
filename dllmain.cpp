@@ -2,29 +2,35 @@
 #include <thread>
 #include <windows.h>
 
+#pragma comment(lib, "Winmm.lib")
+
 void MainThread(HMODULE instance) {
+    PlaySound(TEXT("C:/Windows/Media/Windows Hardware Insert.wav"), nullptr, SND_FILENAME);
+
+    FILE *output_buffer = nullptr;
+    AllocConsole();
+    freopen_s(&output_buffer, "CONOUT$", "w", stdout);
+
     while (!GetAsyncKeyState(VK_END)) {
     }
 
+    if (output_buffer) {
+        fclose(output_buffer);
+    }
+
+    PlaySound(TEXT("C:/Windows/Media/Windows Hardware Remove.wav"), nullptr, SND_FILENAME);
+    FreeConsole();
     FreeLibraryAndExitThread(instance, 0ul);
 }
 
 bool __stdcall DllMain(HINSTANCE instance, const DWORD reason, LPVOID reserved) {
-    static FILE *p_file{nullptr};
-    static std::thread main_thread;
-
     if (reason == DLL_PROCESS_ATTACH) {
-        AllocConsole();
-        freopen_s(&p_file, "CONOUT$", "w", stdout);
+        HANDLE thread_handle = CreateThread(nullptr, 0ull, reinterpret_cast<LPTHREAD_START_ROUTINE>(MainThread),
+                                            instance, 0ul, nullptr);
 
-        main_thread = std::thread([instance] { MainThread(instance); });
-
-        if (main_thread.joinable()) {
-            main_thread.detach();
+        if (thread_handle && thread_handle != INVALID_HANDLE_VALUE) {
+            CloseHandle(thread_handle);
         }
-    } else if (reason == DLL_PROCESS_DETACH) {
-        fclose(p_file);
-        FreeConsole();
     }
 
     return true;
