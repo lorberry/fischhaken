@@ -1,6 +1,7 @@
 #include <iostream>
 #include <thread>
 #include <windows.h>
+#include <MinHook.h>
 
 #pragma comment(lib, "Winmm.lib")
 
