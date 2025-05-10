@@ -12,6 +12,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(minhook)
 
+include_directories(${CMAKE_SOURCE_DIR}/jni)
 include_directories(${minhook_SOURCE_DIR}/include)
 
 add_library(fischhaken SHARED dllmain.cpp)
