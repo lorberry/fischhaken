@@ -25,6 +25,8 @@ add_library(fischhaken SHARED dllmain.cpp
         sdk/classes/classes.cpp
         sdk/minecraft/entity.cpp
         sdk/minecraft/entity.h
+        hooks/Hooks.cpp
+        hooks/Hooks.h
 )
 
 target_link_libraries(fischhaken PRIVATE minhook)
