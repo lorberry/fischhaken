@@ -3,5 +3,5 @@
 
 void classes::load() {
     minecraft_class = jvm::env->FindClass("ave");
-    entity_class = jvm::env->FindClass("bew");
+    entity_class = jvm::env->FindClass("pk");
 }
